@@ -1,0 +1,9 @@
+Steps to run:
+
+1. clone the repo
+
+2. Open terminal type "make" enter
+
+3. run ./program1 - server
+
+4. run ./program2 - client in another terminal
