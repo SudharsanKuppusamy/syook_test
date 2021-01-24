@@ -7,9 +7,10 @@ typedef struct chk_box
     char grid[3][3] ;
     int turn ;
     int msgtype;
-	int count;	//counts the no. of turns
-	int move;
+    int count;	//counts the no. of turns
+    int move;
 }chk_box_t;
+
 
 //function that will display the board which we have stored 
 void display(chk_box_t* data);
