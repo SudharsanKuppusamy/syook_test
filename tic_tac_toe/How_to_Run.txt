@@ -1,0 +1,11 @@
+Steps to run:
+
+1. clone the repo
+
+2. Open 2 number of terminal tabs and type the following and press enter
+	i) gcc -g p2.c header.c header.h -o p2
+	ii) gcc -g p1.c header.c header.h -o p1
+
+3. Type ./p1 to run server program at first terminal tab
+
+4. Type ./p2 - to run client in next terminal tab
