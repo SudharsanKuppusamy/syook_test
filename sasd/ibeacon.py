@@ -10,9 +10,11 @@ def twos_comp(val, bits):
         val = val - (1 << bits)        # compute negative value
     return val
 
+first_ref = 1
+
 def callback(bt_addr, rssi, packet, additional_info):
 
-    #print(packet.uuid)
+    global first_ref, ref
     uuidStr = packet.uuid
     uuidByt = bytearray.fromhex(uuid.UUID(uuidStr).hex)
     if "e1ffa103-64" in uuidStr: 
@@ -34,18 +36,25 @@ def callback(bt_addr, rssi, packet, additional_info):
         print(zaxis)
         
         final= math.sqrt((xaxis*xaxis)+ (yaxis*yaxis)+ (zaxis*zaxis)) 
+        
+        #considering first detecting packet as a reference packet 
+        if first_ref == 1:
+            ref= final
+            first_ref= 2
+            print("Reference value", ref)
+            
         print("final value=", final)
 
-	#if final < 1.0:
-	#	print("Tag is Moving")
-	#else:
-	#	print("Tag is stationary")
+        if final > ref:
+            print("Tag is Moving")
+        else:
+            print("Tag is stationary")
 
-       
 # scan for all iBeacon advertisements regardless from which beacon
-scanner = BeaconScanner(callback, packet_filter=IBeaconAdvertisement)
-scanner.start()
-time.sleep(5)
-scanner.stop() 
+while True:
+  scanner = BeaconScanner(callback, packet_filter=IBeaconAdvertisement)
+  scanner.start()
+  time.sleep(1)
+  scanner.stop() 
 
 
