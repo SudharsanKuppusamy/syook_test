@@ -1,0 +1,11 @@
+1. Download the file 
+2. Open terminal 
+3. Run script using "python3 ibeacon.py"
+4. It will scan the ibeacon available 
+
+
+
+
+
+
+
